@@ -83,16 +83,28 @@
         <input type="reset" value="Reset">
     </form>
     <?php
-        $name = $_GET['name'];
-        $month = $_GET['month'];
-        $day = $_GET['day'];
-        $year = $_GET['year'];
-        $second = $_GET['second'];
-        $minute = $_GET['minute'];
-        $hour = $_GET['hour'];
-        
-        print("hello ". $name."!<br>");
-        print("You have choose to have an appointment on ". $hour.":".$minute.":".$second. ", ".$day."/".$month."/".$year);
+    $name = $_GET['name'];
+    $month = $_GET['month'];
+    $day = $_GET['day'];
+    $year = $_GET['year'];
+    $second = $_GET['second'];
+    $minute = $_GET['minute'];
+    $hour = $_GET['hour'];
+
+    print("hello " . $name . "!<br>");
+    if ($month == "" || $day == "" || $year == "" || $hour == "" || $minute == "" || $second == "")
+    {
+        print("You must enter all the date and time information");
+    }
+    else if (!checkdate($month, $day, $year))
+    {
+        print("The date is invalid");
+    }
+    else 
+    {
+        print("Your appointment is set for " . $month . "/" . $day . "/" . $year . " at " . $hour . ":" . $minute . ":" . $second);
+    }
+    
     ?>
 </body>
 
